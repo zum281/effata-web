@@ -17,12 +17,12 @@ export const Card: FC<CardType> = ({ title, image, url }) => {
 				height={400}
 				className='h-full aspect-square object-cover row-span-2'
 			/>
-			<h3 className='col-span-2 mt-2 ml-4  mb-auto line-clamp-2 font-semibold break-words'>
+			<h3 className='col-span-2 mt-2 lg:mt-4 lg:mr-2 ml-4 mb-auto line-clamp-2 font-semibold break-words md:text-lg lg:text-xl'>
 				{title}
 			</h3>
 			<a
 				href={url}
-				className='flex items-center gap-1 col-span-2 col-start-2 mb-2 ml-4 text-blue-500 text-sm'>
+				className='flex items-center gap-1 col-span-2 col-start-2 mb-2 ml-4 text-blue-500 text-sm md:text-base'>
 				Leggi
 				<svg
 					className='fill-current w-3 h-3'
