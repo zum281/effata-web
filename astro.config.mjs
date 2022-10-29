@@ -5,8 +5,10 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 import react from "@astrojs/react";
-
 import robotsTxt from "astro-robots-txt";
+
+// https://astro.build/config
+import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,7 +17,15 @@ export default defineConfig({
 		tailwind(),
 		react(),
 		robotsTxt({
-			policy: [{ userAgent: "*", disallow: "/" }],
+			policy: [
+				{
+					userAgent: "*",
+					disallow: "/",
+				},
+			],
+		}),
+		image({
+			serviceEntryPoint: "@astrojs/image/sharp",
 		}),
 	],
 });

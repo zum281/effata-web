@@ -1,4 +1,5 @@
 import type { FunctionComponent as FC } from "react";
+import { Image } from "@astrojs/image/components";
 
 export type CardType = {
 	title: string;
@@ -11,7 +12,7 @@ export type CardType = {
 export const Card: FC<CardType> = ({ title, image, url }) => {
 	return (
 		<div className='grid grid-cols-3 border border-blue-700 rounded bg-white shadow-md pr-2'>
-			<img
+			<Image
 				{...image}
 				width={200}
 				height={200}
