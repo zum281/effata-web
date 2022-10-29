@@ -22,7 +22,7 @@ export const Card: FC<CardType> = ({ title, image, url }) => {
 			</h3>
 			<a
 				href={url}
-				className='flex items-center gap-1 col-span-2 col-start-2 mb-2 ml-4 text-blue-500 text-sm md:text-base'>
+				className='flex items-center gap-1 col-span-2 col-start-2 mb-2 ml-4 text-blue-700 text-sm md:text-base'>
 				Leggi
 				<svg
 					className='fill-current w-3 h-3'
