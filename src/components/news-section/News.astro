@@ -2,12 +2,24 @@
 // flex items-center gap-2 overflow-x-scroll w-[100vw]
 import type { CardType } from "./Card";
 import { ReactSwiper } from "./Swiper";
+import { getImage } from "@astrojs/image";
+
+const fetchImage = async (src: string) =>
+	await getImage({
+		src,
+		format: "webp",
+		width: 200,
+		aspectRatio: 1,
+		fit: "cover",
+	}).then((img) => img.src as string);
 
 const items: CardType[] = [
 	{
 		title: "Programma distribuzione prodotti alimentari",
 		image: {
-			src: "https://www.effata-apriti.org/wp-content/uploads/2022/04/Pacchi.jpg",
+			src: await fetchImage(
+				"https://www.effata-apriti.org/wp-content/uploads/2022/04/Pacchi.jpg"
+			),
 			alt: "pacchi",
 		},
 		url: "#",
@@ -15,7 +27,9 @@ const items: CardType[] = [
 	{
 		title: "Foto dell’incontro con l’Arcivescovo Mario Enrico Delpini",
 		image: {
-			src: "https://www.effata-apriti.org/wp-content/uploads/2022/03/13-768x512.jpg",
+			src: await fetchImage(
+				"https://www.effata-apriti.org/wp-content/uploads/2022/03/13-768x512.jpg"
+			),
 			alt: "image",
 		},
 		url: "#",
@@ -23,7 +37,9 @@ const items: CardType[] = [
 	{
 		title: "L’Arcivescovo Mario Enrico Delpini visita Effatà-Apriti",
 		image: {
-			src: "https://www.effata-apriti.org/wp-content/uploads/2022/03/Delpini-1-768x432.jpg",
+			src: await fetchImage(
+				"https://www.effata-apriti.org/wp-content/uploads/2022/03/Delpini-1-768x432.jpg"
+			),
 			alt: "alt",
 		},
 		url: "#",
@@ -31,7 +47,9 @@ const items: CardType[] = [
 	{
 		title: "Un anno controcorrente",
 		image: {
-			src: "https://www.effata-apriti.org/wp-content/uploads/2021/10/IMG_20190228_224100-scaled.jpg",
+			src: await fetchImage(
+				"https://www.effata-apriti.org/wp-content/uploads/2021/10/IMG_20190228_224100-scaled.jpg"
+			),
 			alt: "",
 		},
 		url: "#",
