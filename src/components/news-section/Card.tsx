@@ -13,8 +13,8 @@ export const Card: FC<CardType> = ({ title, image, url }) => {
 		<div className='grid grid-cols-3 border border-blue-700 rounded bg-white shadow-md pr-2'>
 			<img
 				{...image}
-				width={400}
-				height={400}
+				width={200}
+				height={200}
 				className='h-full aspect-square object-cover row-span-2'
 			/>
 			<h3 className='col-span-2 mt-2 lg:mt-4 lg:mr-2 ml-4 mb-auto line-clamp-2 font-semibold break-words md:text-lg lg:text-xl'>
