@@ -12,7 +12,7 @@ module.exports = {
 		plugin(function ({ addComponents }) {
 			const components = {
 				".full-bleed": {
-					boxShadow: "0 0 0 100vmax #000",
+					boxShadow: "0 0 0 100vmax var(--tw-shadow-color)",
 					clipPath: "inset(0 -100vmax)",
 				},
 			};
