@@ -1,10 +1,22 @@
-import { FunctionComponent as FC, useState } from "react";
+import type { FunctionComponent as FC } from "react";
+import { useState, useRef, useEffect } from "react";
+import autoAnimate from "@formkit/auto-animate";
+import { useMediaQuery } from "usehooks-ts";
 export const Navbar: FC = () => {
 	const [open, setOpen] = useState<boolean>(false);
 	const openMenu = () => setOpen((prev) => !prev);
+	const parent = useRef<HTMLElement>(null);
+
+	const matches = useMediaQuery("(min-width: 1024px)");
+
+	useEffect(() => {
+		parent.current && autoAnimate(parent.current);
+	}, [parent]);
 
 	return (
-		<nav className='flex items-center justify-between flex-wrap bg-blue-700 p-6 full-bleed shadow-blue-700'>
+		<nav
+			className='flex items-center justify-between flex-wrap bg-blue-700 p-6 full-bleed shadow-blue-700 max-w-[80rem] mx-auto'
+			ref={parent}>
 			<div className='flex items-center flex-shrink-0 text-white mr-6'>
 				<svg
 					className='fill-current h-8 w-8 mr-2'
@@ -33,28 +45,31 @@ export const Navbar: FC = () => {
 					</svg>
 				</button>
 			</div>
-			<div
-				className={`w-full  flex-grow lg:flex lg:items-center lg:w-auto ${
-					open ? "block" : "hidden"
-				}`}>
-				<div className='text-sm lg:flex-grow'>
-					<a
-						href='#responsive-header'
-						className='block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4'>
-						Docs
-					</a>
-					<a
-						href='#responsive-header'
-						className='block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4'>
-						Examples
-					</a>
-					<a
-						href='#responsive-header'
-						className='block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white'>
-						Blog
-					</a>
-				</div>
-			</div>
+			{(matches || open) && <Menu />}
 		</nav>
+	);
+};
+
+const Menu: FC = () => {
+	return (
+		<div className='w-full flex-grow lg:flex lg:items-center lg:w-auto lg:justify-end'>
+			<div className='text-sm '>
+				<a
+					href='#responsive-header'
+					className='block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4'>
+					Docs
+				</a>
+				<a
+					href='#responsive-header'
+					className='block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4'>
+					Examples
+				</a>
+				<a
+					href='#responsive-header'
+					className='block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white'>
+					Blog
+				</a>
+			</div>
+		</div>
 	);
 };
